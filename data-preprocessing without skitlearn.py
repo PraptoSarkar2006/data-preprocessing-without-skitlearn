@@ -8,24 +8,24 @@ def get_categorical_columns(df):
     return object_cols 
 ##one hot encoding function
 def one_hot_encode(df, categorical_cols):
-    print("\n--- One-Hot Encoding ---")
+    print("\n 🔥One-Hot Encoding🔥 ")
     for col in categorical_cols:
         unique_vals = df[col].dropna().unique()
         for val in unique_vals:
             new_col_name = f"{col}_{val}"
             df[new_col_name] = (df[col] == val).astype(int)
         df.drop(columns=[col], inplace=True)
-    print("One-hot encoding done for:", categorical_cols)
+    print("One-hot🔥 encoding done for:", categorical_cols)
     return df
 ##ordinal encoding function
 def ordinal_encode(df, categorical_cols):
-    print("\n--- Ordinal Encoding ---")
+    print("\n Ordinal Encoding 😑")
     for col in categorical_cols:
         unique_vals = df[col].dropna().unique()
         mapping = {val: i for i, val in enumerate(unique_vals)}
         df[col] = df[col].map(mapping)
         print(f"Column '{col}' mapping:", mapping)
-    print("Ordinal encoding done for:", categorical_cols)
+    print("Ordinal😑 encoding done for:", categorical_cols)
     return df
 ## Fill missing numeric values with mean(imputation ) and add a column to record which values were missing.only uses numeric column
 ## imputation where missingg data is not recorded ,sometimes give better result
@@ -113,5 +113,6 @@ def main():
 # --- Run the program ---
 if __name__ == "__main__":
     main()
+
 
    
